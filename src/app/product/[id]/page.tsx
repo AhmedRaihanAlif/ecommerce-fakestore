@@ -4,6 +4,7 @@ import { getProductById } from "@/lib/api";
 import { fallbackProducts } from "@/lib/fallbackData";
 import { Product } from "@/types/fakestore";
 import styles from "./product.module.css";
+import { notFound } from "next/navigation";
 
 type PageProps = {
   params: Promise<{ id: string }>;
@@ -27,13 +28,18 @@ export async function generateMetadata({ params }: PageProps) {
 
 async function loadProduct(id: string): Promise<Product> {
   try {
-    return await getProductById(id);
+    const product = await getProductById(id);
+    if (!product) {
+      notFound(); // redirect to 404 page
+    }
+    return product;
   } catch {
     const fallback = fallbackProducts.find(
-      (product) => String(product.id) === String(id),
+      (product) => String(product.id) === String(id)
     );
     if (fallback) return fallback;
-    throw new Error("Product not found");
+
+    notFound(); // if no fallback, show 404
   }
 }
 
