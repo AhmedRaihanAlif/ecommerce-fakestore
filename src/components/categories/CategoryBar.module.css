@@ -1,0 +1,36 @@
+.wrapper {
+  margin: 26px 0 12px;
+}
+
+.scroller {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  padding: 4px 2px;
+}
+
+.pill {
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: #fff;
+  color: var(--color-primary);
+  font-weight: 600;
+  text-transform: capitalize;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-soft);
+}
+
+.pill:hover {
+  border-color: var(--color-accent);
+}
+
+.active {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: transparent;
+}
+
+
+

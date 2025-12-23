@@ -1,0 +1,47 @@
+.footer {
+  margin-top: 40px;
+  padding: 36px 0 40px;
+  background: #0b1021;
+  color: #e5e7eb;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  align-items: center;
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.links {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.links a {
+  color: #cbd5e1;
+  font-weight: 600;
+}
+
+.contact {
+  text-align: right;
+}
+
+.muted {
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .contact {
+    text-align: left;
+  }
+}
+
+
+

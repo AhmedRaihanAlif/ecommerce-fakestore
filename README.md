@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MoMagic eCommerce Template
 
-## Getting Started
+Assignment-ready storefront built with **Next.js App Router + TypeScript**, styled with CSS modules (no UI kit), and powered by **FakeStore API**. Includes home page, category filtering, product detail page, and responsive layout matching the Figma brief.
 
-First, run the development server:
+## Features
+
+- Roboto typography, sticky header, hero slider, feature strip, product grid, newsletter CTA, and footer.
+- Live data from `https://fakestoreapi.com/products` and category endpoints, with graceful fallback static data when the API is unavailable.
+- Product detail page (`/product/[id]`) with pricing, rating, and purchase CTAs.
+- 100% responsive layout using CSS modules and shared design tokens in `globals.css`.
+
+## Project Structure
+
+- `src/app/page.tsx` — main storefront page (SSR data fetch + composed sections).
+- `src/app/product/[id]/page.tsx` — product detail route with metadata.
+- `src/components/*` — header, hero slider, product section, cards, newsletter, footer.
+- `src/lib/api.ts` — typed API client for FakeStore.
+- `src/lib/fallbackData.ts` — static fallback products/categories.
+
+## Local Development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# open http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Lint before commits:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run lint
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deployment (Vercel)
 
-## Learn More
+1) Push to a public GitHub repo.  
+2) In Vercel, “New Project” → import the repo.  
+3) Framework: Next.js, root directory: `web` (if deploying from monorepo).  
+4) Environment variables: none required.  
+5) Deploy — Vercel will build and host the live link.
 
-To learn more about Next.js, take a look at the following resources:
+## Notes for Reviewers
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Remote images allowed via `next.config.ts` (`fakestoreapi.com`, `images.unsplash.com`).  
+- Header/footer/slider use static copy per assignment; all nav links are clickable anchors.  
+- If an API field is missing, the UI renders safe fallbacks and local sample data.
